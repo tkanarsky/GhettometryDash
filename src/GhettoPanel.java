@@ -1,5 +1,6 @@
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.AbstractAction;
 import javax.swing.JPanel;
@@ -12,6 +13,8 @@ public class GhettoPanel extends JPanel {
 	private Timer timer;
 	private InputManager im;
 
+	private static final int TICK_SPEED = 15;
+
 	public GhettoPanel(Dimension d) {
 		super(false);
 		im = new InputManager();
@@ -22,19 +25,37 @@ public class GhettoPanel extends JPanel {
 		setUpTimer();
 	}
 
-	private void onClick(boolean state) {
-		
-		
+	private void setUpInputs() {
+
+		this.getInputMap().put(KeyStroke.getKeyStroke("pressed SPACE"),
+				"JUMPING");
+		this.getInputMap().put(KeyStroke.getKeyStroke("released SPACE"),
+				"NOT JUMPING");
+		this.im.addInput("JUMP");
+		this.getActionMap().put("JUMPING", new AbstractAction() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				im.setInput("JUMP", true);
+				repaint();
+			}
+		});
+		this.getActionMap().put("NOT JUMPING", new AbstractAction() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				im.setInput("JUMP", false);
+				repaint();
+			}
+		});
 
 	}
 
-	private void setUpInputs() {
-		
-		this.getInputMap().put(KeyStroke.getKeyStroke("pressed SPACE"), "JUMPING");
-		this.getInputMap().put(KeyStroke.getKeyStroke("released SPACE"), "NOT JUMPING");
-		this.im.addInput("JUMP");
-
-
+	private void setUpTimer() {
+		timer = new Timer(10, new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				// TODO: Shit that ticks
+			}
+		});
 	}
 
 }
