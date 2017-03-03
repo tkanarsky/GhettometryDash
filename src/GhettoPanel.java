@@ -20,7 +20,7 @@ public class GhettoPanel extends JPanel {
 		im = new InputManager();
 		this.dim = d;
 		this.setPreferredSize(dim);
-		setUpGameMap();
+//		setUpGameMap();
 		setUpInputs();
 		setUpTimer();
 	}
