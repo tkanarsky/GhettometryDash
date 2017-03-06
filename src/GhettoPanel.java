@@ -1,5 +1,6 @@
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -13,6 +14,8 @@ public class GhettoPanel extends JPanel {
 	private Dimension dim;
 	private Timer timer;
 	private InputManager im;
+	private Player boop = new Player(5,5);
+
 
 	private static final int TICK_SPEED = 15;
 
@@ -56,8 +59,14 @@ public class GhettoPanel extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				// TODO: Shit that ticks
+				boop.move();
 			}
 		});
 	}
 
+	public void paintComponent(Graphics g){
+		super.paintComponent(g);
+		boop.draw(g);
+	}
+	
 }
