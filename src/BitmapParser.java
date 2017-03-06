@@ -10,20 +10,20 @@ public class BitmapParser {
 
 	static BufferedImage levelMap;
 
-	private static HashMap<Color, LevelObject> colorCodes = new HashMap<Color, LevelObject>();
+	private static HashMap<Color, ObjectList> colorCodes = new HashMap<Color, ObjectList>();
 
 	static {
-		colorCodes.put(new Color(255, 0, 0), LevelObject.SPIKE);
-		colorCodes.put(new Color(0, 0, 0), LevelObject.BLOCK);
-		colorCodes.put(new Color(127, 127, 127), LevelObject.SHORT_BLOCK);
-		colorCodes.put(new Color(255, 255, 255), LevelObject.EMPTY);
-		colorCodes.put(new Color(255, 255, 0), LevelObject.PAD_YELLOW);
-		colorCodes.put(new Color(255, 0, 255), LevelObject.PAD_PINK);
-		colorCodes.put(new Color(0, 255, 255), LevelObject.PAD_BLUE);
-		colorCodes.put(new Color(127, 127, 0), LevelObject.RING_YELLOW);
-		colorCodes.put(new Color(127, 0, 127), LevelObject.RING_PINK);
-		colorCodes.put(new Color(0, 127, 127), LevelObject.RING_BLUE);
-		colorCodes.put(new Color(0, 255, 0), LevelObject.GRAVITY_PORTAL);
+		colorCodes.put(new Color(255, 0, 0), ObjectList.SPIKE);
+		colorCodes.put(new Color(0, 0, 0), ObjectList.BLOCK);
+		colorCodes.put(new Color(127, 127, 127), ObjectList.SHORT_BLOCK);
+		colorCodes.put(new Color(255, 255, 255), ObjectList.EMPTY);
+		colorCodes.put(new Color(255, 255, 0), ObjectList.PAD_YELLOW);
+		colorCodes.put(new Color(255, 0, 255), ObjectList.PAD_PINK);
+		colorCodes.put(new Color(0, 255, 255), ObjectList.PAD_BLUE);
+		colorCodes.put(new Color(127, 127, 0), ObjectList.RING_YELLOW);
+		colorCodes.put(new Color(127, 0, 127), ObjectList.RING_PINK);
+		colorCodes.put(new Color(0, 127, 127), ObjectList.RING_BLUE);
+		colorCodes.put(new Color(0, 255, 0), ObjectList.GRAVITY_PORTAL);
 	}
 
 	public BitmapParser(String levelName) {
@@ -39,53 +39,65 @@ public class BitmapParser {
 		Log.log("Successfully loaded levelmap: " + levelName, Log.VERBOSE);
 	}
 
-	public LevelObject[][] readBitmap() throws IOException {
-		LevelObject[][] bitmap = new LevelObject[levelMap.getHeight()][levelMap
+	public ObjectList[][] readBitmap() throws IOException {
+		ObjectList[][] bitmap = new ObjectList[levelMap.getHeight()][levelMap
 				.getWidth()];
 		for (int i = 0; i < bitmap.length; i++) {
 			for (int j = 0; j < bitmap[i].length; j++) {
 				Color c = Color.decode(Integer.toString(levelMap.getRGB(j, i)));
 				switch (colorCodes.get(c)) {
 				case SPIKE:
-					bitmap[i][j] = LevelObject.SPIKE;
+					bitmap[i][j] = ObjectList.SPIKE;
 					break;
 				case BLOCK:
-					bitmap[i][j] = LevelObject.BLOCK;
+					bitmap[i][j] = ObjectList.BLOCK;
 					break;
 				case EMPTY:
-					bitmap[i][j] = LevelObject.EMPTY;
+					bitmap[i][j] = ObjectList.EMPTY;
 					break;
 				case GRAVITY_PORTAL:
-					bitmap[i][j] = LevelObject.GRAVITY_PORTAL;
+					bitmap[i][j] = ObjectList.GRAVITY_PORTAL;
 					break;
 				case PAD_BLUE:
-					bitmap[i][j] = LevelObject.PAD_BLUE;
+					bitmap[i][j] = ObjectList.PAD_BLUE;
 					break;
 				case PAD_PINK:
-					bitmap[i][j] = LevelObject.PAD_PINK;
+					bitmap[i][j] = ObjectList.PAD_PINK;
 					break;
 				case PAD_YELLOW:
-					bitmap[i][j] = LevelObject.PAD_YELLOW;
+					bitmap[i][j] = ObjectList.PAD_YELLOW;
 					break;
 				case RING_BLUE:
-					bitmap[i][j] = LevelObject.RING_BLUE;
+					bitmap[i][j] = ObjectList.RING_BLUE;
 					break;
 				case RING_PINK:
-					bitmap[i][j] = LevelObject.RING_PINK;
+					bitmap[i][j] = ObjectList.RING_PINK;
 					break;
 				case RING_YELLOW:
-					bitmap[i][j] = LevelObject.RING_YELLOW;
+					bitmap[i][j] = ObjectList.RING_YELLOW;
 					break;
 				case SHORT_BLOCK:
-					bitmap[i][j] = LevelObject.SHORT_BLOCK;
+					bitmap[i][j] = ObjectList.SHORT_BLOCK;
 					break;
 				default:
-					bitmap[i][j] = LevelObject.EMPTY;
+					bitmap[i][j] = ObjectList.EMPTY;
 					break;
 				}
 			}
 		}
 		return bitmap;
+	}
+	
+	public static void main(String[] args) throws IOException {
+		BitmapParser bmp = new BitmapParser("level");
+		ObjectList[][] bitmap = bmp.readBitmap();
+		for (ObjectList[] lor : bitmap) {
+			for (ObjectList obj : lor) {
+				if (obj.equals(ObjectList.EMPTY)) System.out.print("     ");
+				else System.out.print(obj);
+			}
+			System.out.println();
+		}
 	}
 
 }

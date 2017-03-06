@@ -3,11 +3,11 @@ import java.awt.Dimension;
 
 public class GhettoMap {
 	
-	private Object[][] objects;
+	private Object[][] objectsonScreen;
 	private Dimension dim;
 	
 	public GhettoMap(Dimension dim) {
-		ths
+		
 	}
 	
 }

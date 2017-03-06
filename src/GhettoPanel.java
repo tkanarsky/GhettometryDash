@@ -1,3 +1,4 @@
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -20,6 +21,7 @@ public class GhettoPanel extends JPanel {
 		im = new InputManager();
 		this.dim = d;
 		this.setPreferredSize(dim);
+		this.setBackground(new Color(0,0,0));
 //		setUpGameMap();
 		setUpInputs();
 		setUpTimer();

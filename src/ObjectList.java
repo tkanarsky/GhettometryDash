@@ -1,8 +1,10 @@
 import java.awt.Color;
 
-public enum LevelObject {
+public enum ObjectList {
 
 	SPIKE, BLOCK, SHORT_BLOCK, PAD_BLUE, PAD_PINK, PAD_YELLOW, RING_PINK, RING_BLUE, RING_YELLOW, GRAVITY_PORTAL, EMPTY;
 
 }
+
+
 
