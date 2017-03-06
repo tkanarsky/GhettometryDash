@@ -10,20 +10,20 @@ public class BitmapParser {
 
 	static BufferedImage levelMap;
 
-	private static HashMap<Color, ObjectList> colorCodes = new HashMap<Color, ObjectList>();
+	private static HashMap<Color, LevelObject> colorCodes = new HashMap<Color, LevelObject>();
 
 	static {
-		colorCodes.put(new Color(255, 0, 0), ObjectList.SPIKE);
-		colorCodes.put(new Color(0, 0, 0), ObjectList.BLOCK);
-		colorCodes.put(new Color(127, 127, 127), ObjectList.SHORT_BLOCK);
-		colorCodes.put(new Color(255, 255, 255), ObjectList.EMPTY);
-		colorCodes.put(new Color(255, 255, 0), ObjectList.PAD_YELLOW);
-		colorCodes.put(new Color(255, 0, 255), ObjectList.PAD_PINK);
-		colorCodes.put(new Color(0, 255, 255), ObjectList.PAD_BLUE);
-		colorCodes.put(new Color(127, 127, 0), ObjectList.RING_YELLOW);
-		colorCodes.put(new Color(127, 0, 127), ObjectList.RING_PINK);
-		colorCodes.put(new Color(0, 127, 127), ObjectList.RING_BLUE);
-		colorCodes.put(new Color(0, 255, 0), ObjectList.GRAVITY_PORTAL);
+		colorCodes.put(new Color(255, 0, 0), ObjectType.SPIKE);
+		colorCodes.put(new Color(0, 0, 0), ObjectType.BLOCK);
+		colorCodes.put(new Color(127, 127, 127), ObjectType.SHORT_BLOCK);
+		colorCodes.put(new Color(255, 255, 255), ObjectType.EMPTY);
+		colorCodes.put(new Color(255, 255, 0), ObjectType.PAD_YELLOW);
+		colorCodes.put(new Color(255, 0, 255), ObjectType.PAD_PINK);
+		colorCodes.put(new Color(0, 255, 255), ObjectType.PAD_BLUE);
+		colorCodes.put(new Color(127, 127, 0), ObjectType.RING_YELLOW);
+		colorCodes.put(new Color(127, 0, 127), ObjectType.RING_PINK);
+		colorCodes.put(new Color(0, 127, 127), ObjectType.RING_BLUE);
+		colorCodes.put(new Color(0, 255, 0), ObjectType.GRAVITY_PORTAL);
 	}
 
 	public BitmapParser(String levelName) {
@@ -39,48 +39,48 @@ public class BitmapParser {
 		Log.log("Successfully loaded levelmap: " + levelName, Log.VERBOSE);
 	}
 
-	public ObjectList[][] readBitmap() throws IOException {
-		ObjectList[][] bitmap = new ObjectList[levelMap.getHeight()][levelMap
+	public LevelObject[][] readBitmap() throws IOException {
+		LevelObject[][] bitmap = new LevelObject[levelMap.getHeight()][levelMap
 				.getWidth()];
 		for (int i = 0; i < bitmap.length; i++) {
 			for (int j = 0; j < bitmap[i].length; j++) {
 				Color c = Color.decode(Integer.toString(levelMap.getRGB(j, i)));
 				switch (colorCodes.get(c)) {
 				case SPIKE:
-					bitmap[i][j] = ObjectList.SPIKE;
+					bitmap[i][j] = LevelObject.SPIKE;
 					break;
 				case BLOCK:
-					bitmap[i][j] = ObjectList.BLOCK;
+					bitmap[i][j] = LevelObject.BLOCK;
 					break;
 				case EMPTY:
-					bitmap[i][j] = ObjectList.EMPTY;
+					bitmap[i][j] = LevelObject.EMPTY;
 					break;
 				case GRAVITY_PORTAL:
-					bitmap[i][j] = ObjectList.GRAVITY_PORTAL;
+					bitmap[i][j] = LevelObject.GRAVITY_PORTAL;
 					break;
 				case PAD_BLUE:
-					bitmap[i][j] = ObjectList.PAD_BLUE;
+					bitmap[i][j] = LevelObject.PAD_BLUE;
 					break;
 				case PAD_PINK:
-					bitmap[i][j] = ObjectList.PAD_PINK;
+					bitmap[i][j] = LevelObject.PAD_PINK;
 					break;
 				case PAD_YELLOW:
-					bitmap[i][j] = ObjectList.PAD_YELLOW;
+					bitmap[i][j] = LevelObject.PAD_YELLOW;
 					break;
 				case RING_BLUE:
-					bitmap[i][j] = ObjectList.RING_BLUE;
+					bitmap[i][j] = LevelObject.RING_BLUE;
 					break;
 				case RING_PINK:
-					bitmap[i][j] = ObjectList.RING_PINK;
+					bitmap[i][j] = LevelObject.RING_PINK;
 					break;
 				case RING_YELLOW:
-					bitmap[i][j] = ObjectList.RING_YELLOW;
+					bitmap[i][j] = LevelObject.RING_YELLOW;
 					break;
 				case SHORT_BLOCK:
-					bitmap[i][j] = ObjectList.SHORT_BLOCK;
+					bitmap[i][j] = LevelObject.SHORT_BLOCK;
 					break;
 				default:
-					bitmap[i][j] = ObjectList.EMPTY;
+					bitmap[i][j] = LevelObject.EMPTY;
 					break;
 				}
 			}
