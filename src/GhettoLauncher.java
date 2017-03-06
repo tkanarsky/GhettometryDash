@@ -9,7 +9,6 @@ public class GhettoLauncher extends JFrame {
 	public GhettoLauncher() {
 		super("Ghettometry Dash!");
 		System.setProperty("sun.java2d.opengl", "true");
-		
 		Dimension d = new Dimension(840,600);
 		GhettoPanel panel = new GhettoPanel(d);
 		this.add(panel);

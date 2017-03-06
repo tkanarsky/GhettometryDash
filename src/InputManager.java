@@ -14,7 +14,8 @@ public class InputManager {
 	}
 
 	public void setInput(String name, boolean pressed) {
-		actions.put(name, pressed);
+		if (pressed != actions.get(name).booleanValue())
+			actions.put(name, pressed);
 	}
 
 }
