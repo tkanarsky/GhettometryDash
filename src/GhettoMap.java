@@ -29,21 +29,30 @@ public class GhettoMap {
 		for (int y = 0; y < mapTemplate.length; y++) { 
 			for (int x = 0; x < mapTemplate[x].length; x++) {
 				switch(mapTemplate[y][x]) {
-				case EMPTY:
-					break;
-				case SPIKE:
-					map.add(new Spike(x*BLOCK_WIDTH, y*BLOCK_WIDTH));
-				}
-				
+					case EMPTY:
+						break;
+					case SPIKE:
+						map.add(new Spike(x*BLOCK_WIDTH, y*BLOCK_WIDTH));
 				}
 			}
 		}
 	}
 
+
 	private void advancePlayer() {
 		if (!gameOver) {
-			player.
+			
 		}
+	}
+	
+	public boolean gameOver() {
+		for (GhettoObject go : map) {
+			if (player.isColliding(go)) {
+				
+			}
+		}
+	}
+	
 	
 	
 }
