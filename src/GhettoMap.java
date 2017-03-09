@@ -34,6 +34,7 @@ public class GhettoMap {
 				case SPIKE:
 					ghettoObjects.add(new Spike(x * BLOCK_WIDTH, y
 							* BLOCK_WIDTH));
+					
 				default:
 					break;
 				}
