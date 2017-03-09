@@ -11,7 +11,7 @@ public enum ObjectType {
 	PAD_YELLOW("yellowpad"), 
 	RING_PINK("pinkring"),
 	RING_BLUE("bluering"), 
-	RING_YELLOW("yellowright"), 
+	RING_YELLOW("yellowring"), 
 	EMPTY(null);
 
 	private String imageName;
