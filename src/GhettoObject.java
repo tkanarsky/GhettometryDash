@@ -10,11 +10,13 @@ import java.awt.Graphics2D;
 import javax.imageio.ImageIO;
 
 public class GhettoObject {
-	protected int x, y, width, height;
-	public static final int NORTH = 1, SOUTH = 3, EAST = 2, WEST = 4;
+
+	protected double x, y;
+	protected int width, height;
 	protected BufferedImage img;
-	protected Rectangle boundingRect;
 	protected ObjectType type;
+
+	protected Vec2 velocity = Vec2.zero();
 
 	public GhettoObject(int inputx, int inputy, int inputwidth, int inputheight, ObjectType inputtype) {
 		x = inputx;
@@ -25,18 +27,22 @@ public class GhettoObject {
 		loadImage(type.getImageName());
 	}
 
-	public void draw(Graphics g) {
-		g.drawImage(img, x, y, null);
+	public void draw(Graphics g, int xOffset, int yOffset) {
+		g.drawImage(img, (int) (x - xOffset), (int) (y - yOffset), width, height, null);
 	}
-	
-	public void tick() {};
-	
+
+	public void tick() {
+		x += velocity.getX();
+		y += velocity.getY();
+	};
+
 	protected void loadImage(String imageName) {
 		try {
 			URL url = getClass().getResource("res/" + imageName + ".png");
 			img = ImageIO.read(url);
 		} catch (Exception e) {
-			System.out.println("Image could not be opened: " + "res/" + imageName + ".png");
+			System.out.println("Image could not be opened: " + "res/"
+					+ imageName + ".png");
 			e.printStackTrace();
 		}
 		img = getScaledImage(img, width, height);
@@ -49,12 +55,20 @@ public class GhettoObject {
 		g2.dispose();
 		return resizedImg;
 	}
-	
+
+	public void setVelocity(Vec2 v) {
+		velocity = v;
+	}
+
+	public Vec2 getVelocity() {
+		return velocity;
+	}
+
 	public void setX(int input) {
 		x = input;
 	}
 
-	public int getX() {
+	public double getX() {
 		return x;
 	}
 
@@ -62,7 +76,7 @@ public class GhettoObject {
 		y = input;
 	}
 
-	public int getY() {
+	public double getY() {
 		return y;
 	}
 
@@ -81,14 +95,14 @@ public class GhettoObject {
 	public int getHeight() {
 		return height;
 	}
-	
+
 	public Rectangle getBoundingBox() {
-		return new Rectangle(x, y, width, height);
+		return new Rectangle((int) x, (int) y, width, height);
 	}
-	
+
 	public boolean isColliding(GhettoObject go) {
-		return (new Rectangle(x, y, width, height).intersects(go.getBoundingBox()));
+		return getBoundingBox().intersects(go
+				.getBoundingBox());
 	}
-		
 
 }
