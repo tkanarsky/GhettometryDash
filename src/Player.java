@@ -8,7 +8,7 @@ import javax.imageio.ImageIO;
 public class Player extends GhettoObject{
 
 	public Player(int x, int y) {
-		super(x, y, 60, 60, "basicSquare");
+		super(x, y, 60, 60, ObjectType.PLAYER);
 		
 	}
 	

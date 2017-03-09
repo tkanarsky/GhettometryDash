@@ -23,7 +23,6 @@ public class BitmapParser {
 		colorCodes.put(new Color(127, 127, 0), ObjectType.RING_YELLOW);
 		colorCodes.put(new Color(127, 0, 127), ObjectType.RING_PINK);
 		colorCodes.put(new Color(0, 127, 127), ObjectType.RING_BLUE);
-		colorCodes.put(new Color(0, 255, 0), ObjectType.GRAVITY_PORTAL);
 	}
 
 	public BitmapParser(String levelName) {
@@ -54,9 +53,6 @@ public class BitmapParser {
 					break;
 				case EMPTY:
 					bitmap[i][j] = ObjectType.EMPTY;
-					break;
-				case GRAVITY_PORTAL:
-					bitmap[i][j] = ObjectType.GRAVITY_PORTAL;
 					break;
 				case PAD_BLUE:
 					bitmap[i][j] = ObjectType.PAD_BLUE;

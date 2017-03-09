@@ -14,18 +14,22 @@ public class GhettoObject {
 	public static final int NORTH = 1, SOUTH = 3, EAST = 2, WEST = 4;
 	protected BufferedImage img;
 	protected Rectangle boundingRect;
+	protected ObjectType type;
 
-	public GhettoObject(int inputx, int inputy, int inputwidth, int inputheight, String imageName) {
+	public GhettoObject(int inputx, int inputy, int inputwidth, int inputheight, ObjectType inputtype) {
 		x = inputx;
 		y = inputy;
 		width = inputwidth;
 		height = inputheight;
-		loadImage(imageName);
+		type = inputtype;
+		loadImage(type.getImageName());
 	}
 
 	public void draw(Graphics g) {
 		g.drawImage(img, x, y, null);
 	}
+	
+	public void tick() {};
 	
 	protected void loadImage(String imageName) {
 		try {

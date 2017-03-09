@@ -14,8 +14,7 @@ public class GhettoPanel extends JPanel {
 	private Dimension dim;
 	private Timer timer;
 	private InputManager im;
-	private Player boop = new Player(5,5);
-
+	private GhettoMap gm;
 
 	private static final int TICK_SPEED = 15;
 
@@ -25,14 +24,18 @@ public class GhettoPanel extends JPanel {
 		this.dim = d;
 		this.setPreferredSize(dim);
 		this.setBackground(new Color(0,0,0));
-//		setUpGameMap();
+		setUpGameMap();
 		setUpInputs();
 		setUpTimer();
 	}
 
+	private void setUpGameMap() {
+		gm = new GhettoMap(dim, "level");
+	}
+
 	private void setUpInputs() {
 
-		this.getInputMap().put(KeyStroke.getKeyStroke("pressed SPACE"),
+		this.getInputMap().put(KeyStroke.getKeyStroke("SPACE"),
 				"JUMPING");
 		this.getInputMap().put(KeyStroke.getKeyStroke("released SPACE"),
 				"NOT JUMPING");
@@ -58,15 +61,14 @@ public class GhettoPanel extends JPanel {
 		timer = new Timer(10, new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				// TODO: Shit that ticks
-				boop.move();
+				gm.tick();
 			}
 		});
 	}
 
 	public void paintComponent(Graphics g){
 		super.paintComponent(g);
-		boop.draw(g);
+		gm.draw(g);
 	}
 	
 }
