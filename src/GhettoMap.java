@@ -6,6 +6,7 @@ import java.util.ArrayList;
 public class GhettoMap {
 	public ObjectType[][] mapTemplate;
 	public ArrayList<GhettoObject> map;
+	public Player player;
 	private Dimension dim;
 	private int rows;
 	private int columns;
@@ -41,7 +42,7 @@ public class GhettoMap {
 
 	private void advancePlayer() {
 		if (!gameOver) {
-			play
+			player.
 		}
 	
 	

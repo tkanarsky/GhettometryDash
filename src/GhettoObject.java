@@ -81,6 +81,10 @@ public class GhettoObject {
 	public Rectangle getBoundingBox() {
 		return new Rectangle(x, y, width, height);
 	}
+	
+	public boolean isColliding(GhettoObject go) {
+		return (new Rectangle(x, y, width, height).intersects(go.getBoundingBox()));
+	}
 		
 
 }
