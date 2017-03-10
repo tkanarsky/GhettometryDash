@@ -44,13 +44,6 @@ public class BitmapParser {
 		for (int i = 0; i < bitmap.length; i++) {
 			for (int j = 0; j < bitmap[i].length; j++) {
 				Color c = Color.decode(Integer.toString(levelMap.getRGB(j, i)));
-				
-				if (!colorCodes.containsKey(c))
-				{
-					bitmap[i][j] = ObjectType.SPIKE;
-					continue;
-				}
-				
 				switch (colorCodes.get(c)) {
 				case SPIKE:
 					bitmap[i][j] = ObjectType.SPIKE;

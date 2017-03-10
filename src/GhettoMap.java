@@ -41,7 +41,30 @@ public class GhettoMap {
 					break;
 				case SPIKE:
 					ghettoObjects.add(new Spike(x * BLOCK_WIDTH, y * BLOCK_WIDTH));
-					System.out.println(x * BLOCK_WIDTH + " " + y * BLOCK_WIDTH);
+					break;
+				case BLOCK:
+					ghettoObjects.add(new Block(x * BLOCK_WIDTH, y * BLOCK_WIDTH));
+					break;
+				case SHORT_BLOCK:
+					ghettoObjects.add(new ShortBlock(x * BLOCK_WIDTH, y * BLOCK_WIDTH));
+					break;
+				case PAD_PINK:
+					ghettoObjects.add(new PinkPad(x * BLOCK_WIDTH, y * BLOCK_WIDTH));
+					break;
+				case PAD_BLUE:
+					ghettoObjects.add(new BluePad(x * BLOCK_WIDTH, y * BLOCK_WIDTH));
+					break;
+				case PAD_YELLOW:
+					ghettoObjects.add(new YellowPad(x * BLOCK_WIDTH, y * BLOCK_WIDTH));
+					break;
+				case RING_PINK:
+					ghettoObjects.add(new PinkRing(x * BLOCK_WIDTH, y * BLOCK_WIDTH));
+					break;
+				case RING_BLUE:
+					ghettoObjects.add(new BlueRing(x * BLOCK_WIDTH, y * BLOCK_WIDTH));
+					break;
+				case RING_YELLOW:
+					ghettoObjects.add(new YellowRing(x * BLOCK_WIDTH, y * BLOCK_WIDTH));
 					break;
 				default:
 					break;
@@ -51,7 +74,7 @@ public class GhettoMap {
 	}
 
 	private void makePlayer() {
-		player = new Player(-10, -10);
+		player = new Player(mapTemplate.length*60, 60);
 		ghettoObjects.add(player);
 	}
 
