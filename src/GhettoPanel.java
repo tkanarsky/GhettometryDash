@@ -53,10 +53,10 @@ public class GhettoPanel extends JPanel {
 
 		String[] inputNames = { "up", "down", "left", "right" };
 
-		this.getInputMap().put(KeyStroke.getKeyStroke("UP"), "up");
-		this.getInputMap().put(KeyStroke.getKeyStroke("DOWN"), "down");
-		this.getInputMap().put(KeyStroke.getKeyStroke("LEFT"), "left");
-		this.getInputMap().put(KeyStroke.getKeyStroke("RIGHT"), "right");
+//		this.getInputMap().put(KeyStroke.getKeyStroke("UP"), "up");
+//		this.getInputMap().put(KeyStroke.getKeyStroke("DOWN"), "down");
+//		this.getInputMap().put(KeyStroke.getKeyStroke("LEFT"), "left");
+//		this.getInputMap().put(KeyStroke.getKeyStroke("RIGHT"), "right");
 
 		this.getInputMap().put(KeyStroke.getKeyStroke("released UP"), "released up");
 		this.getInputMap().put(KeyStroke.getKeyStroke("released DOWN"), "released down");

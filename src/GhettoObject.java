@@ -64,16 +64,16 @@ public class GhettoObject {
 		return velocity;
 	}
 
-	public void setX(int input) {
-		x = input;
+	public void setX(double d) {
+		x = d;
 	}
 
 	public double getX() {
 		return x;
 	}
 
-	public void setY(int input) {
-		y = input;
+	public void setY(double d) {
+		y = d;
 	}
 
 	public double getY() {

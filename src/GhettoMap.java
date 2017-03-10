@@ -80,29 +80,17 @@ public class GhettoMap {
 
 	public void tick() {
 		for (GhettoObject go : ghettoObjects) {
+			//if(!go.isColliding(go))
+			if(player.isColliding(go)){
+				if(go instanceof Block){
+					if (im.getInput("JUMP"))
+					{
+						player.jump();
+					}
+				}
+			}
 			go.tick();
-		}
-
-		Vec2 dir = Vec2.zero();
-
-		if (im.getInput("up")) {
-			dir.addLocal(0, -1);
-		}
-		if (im.getInput("right")) {
-			dir.addLocal(1, 0);
-		}
-		if (im.getInput("down")) {
-			dir.addLocal(0, 1);
-		}
-		if (im.getInput("left")) {
-			dir.addLocal(-1, 0);
-		}
-
-		if (dir.equals(Vec2.zero())) {
-			player.setVelocity(Vec2.zero());
-		} else {
-			player.setVelocity(dir.normalize());
-		}
+		}		
 		
 		System.out.println(player.getX() + " " + player.getY());
 

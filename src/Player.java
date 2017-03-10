@@ -12,6 +12,16 @@ public class Player extends GhettoObject{
 		
 	}
 	
+	public void jump(){
+		velocity.addLocal(0, -1);
+	}
+	
+	@Override
+	public void tick()
+	{
+		super.tick();
+		velocity.addLocal(0, 0.1);
+	}
 	
 	
 }
