@@ -89,6 +89,10 @@ public class GhettoMap {
 						player.jump();
 					}
 				}
+				if(go instanceof YellowPad) {
+					player.jump();
+					player.jump();
+				}
 			}
 			go.tick();
 		}		
