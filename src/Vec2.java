@@ -25,13 +25,13 @@ public class Vec2
 		return y;
 	}
 
-	public double setX(int x)
+	public double setX(double d)
 	{
-		this.x = x;
-		return x;
+		this.x = d;
+		return d;
 	}
 
-	public double setY(int y)
+	public double setY(double y)
 	{
 		this.y = y;
 		return y;

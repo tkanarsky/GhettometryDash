@@ -74,14 +74,15 @@ public class GhettoMap {
 	}
 
 	private void makePlayer() {
-		player = new Player(mapTemplate.length*60, 60);
+		player = new Player(0, 60);
 		ghettoObjects.add(player);
 	}
 
 	public void tick() {
 		for (GhettoObject go : ghettoObjects) {
 			//if(!go.isColliding(go))
-			if(player.isColliding(go)){
+			if(player.isColliding(go) && !(go instanceof Player)){
+				player.getVelocity().setY(0);
 				if(go instanceof Block){
 					if (im.getInput("JUMP"))
 					{
@@ -91,9 +92,6 @@ public class GhettoMap {
 			}
 			go.tick();
 		}		
-		
-		System.out.println(player.getX() + " " + player.getY());
-
 	}
 
 	public void draw(Graphics g) {
